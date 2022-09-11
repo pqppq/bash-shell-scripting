@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Exercise 1
+echo "Shell Scripting is Fun!"
+
+# Exercise 2
+s2="Shell Scripting is Fun!"
+echo "$s2"
+
+# Exercise 3
+hostname="$(hostname)"
+echo "This script is running on ${hostname}"
+
+# Exercise 4
+if [[ -e /etc/shadow ]]; then
+	echo "Shadow passwords are enabled."
+fi
+
+if [[ -e /etc/shadow ]]; then
+	echo "You have permissions to edit /etc/shadow."
+else
+	echo "You do NOT have permissons to edit /etc/shadow."
+fi
+
+# Exercise 5
+for s in man bear pig dog cat sheep; do
+	echo "$s" 
+done
+
+# Exercise 6
+files="$(ls)"
+for n in $files; do
+	if [[ -f $n ]]; then
+		echo "regular file: ${n}"
+	elif [[ -d $n ]]; then
+		echo "a directory: ${n}"
+	else
+		echo "other type of file: ${n}"
+	fi
+done
+
+# Exercise 7
+read -r fname
+if [[ -f $fname ]]; then
+	echo "regular file: ${n}"
+elif [[ -d $fname ]]; then
+	echo "a directory: ${n}"
+else
+	echo "other type of file: ${fname}"
+fi
+
+# Exercise 8
+for n in "$@"; do
+	if [[ -f $n ]]; then
+		echo "regular file: ${n}"
+	elif [[ -d $n ]]; then
+		echo "a directory: ${n}"
+	else
+		echo "other type of file: ${n}"
+	fi
+done

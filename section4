@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function file_count {
+	d="$1"
+	c="$(find "$d" -maxdepth 1 | wc -l)"
+	echo "$d:" 
+	echo "$c"
+}
+
+for d in "/etc" "/var" "/usr/bin"; do
+	file_count $d
+done

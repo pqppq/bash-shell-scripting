@@ -1,0 +1,45 @@
+#!/bin/bash
+
+n=1
+echo -n "How many lines of /etc/passwd would you like to see? "
+read -r m
+while read -r LINE; do
+	if [[ $n -gt $m ]]; then
+		break
+	fi
+	echo "$n: $LINE"
+	((n++))
+done </etc/passwd
+
+function usage {
+	echo "1. Show disk usage."
+	echo "2. Show system uptime."
+	echo "3. Show the users logged into the system."
+}
+
+while true; do
+	usage
+	echo -n "What would you like to do? (Enter q to quit.) "
+	read -r c
+	case $c in
+	1)
+		df -h
+		echo
+		;;
+	2)
+		uptime
+		echo
+		;;
+	3)
+		whoami
+		echo
+		;;
+	q)
+		echo "Goodbye!"
+		exit 1
+		;;
+	*)
+		echo "Invalid option."
+		;;
+	esac
+done

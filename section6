@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -n "Please enter a file extension: "
+read -r ext
+echo -n "prefix: "
+read -r pre
+
+for f in *."$ext"; do
+	echo "rename $f to $pre-$f"
+	mv "$f" "$pre-$f"
+done;
